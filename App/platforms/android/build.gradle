@@ -16,8 +16,8 @@ buildscript {
 
     dependencies {
         // You can update gradle by changing build-folder/android-build/gradle/wrapper/gradle-wrapper.properties
-        classpath 'com.android.tools.build:gradle:3.1.0'
-        classpath 'com.google.gms:google-services:4.0.1'
+        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.google.gms:google-services:4.2.0'
     }
 }
 
@@ -97,7 +97,10 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         // Enabling multidex support.
-        multiDexEnabled = true
+        //TODO: brings problems on Android 4.4
+//        multiDexEnabled = true
+        minSdkVersion 19
+        targetSdkVersion 28
 
     }
 }
@@ -167,30 +170,32 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation fileTree(dir: 'src', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'         // Optional??
-    implementation 'com.google.android.gms:play-services-base:15.0.1'  // Mandatory - Firebase rely on Google Play services
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
 
     // For AdMob support
-    implementation 'com.google.firebase:firebase-ads:15.0.1'
+    implementation 'com.google.firebase:firebase-ads:17.2.0'
 
     // For Google Analytics support
-    implementation 'com.google.firebase:firebase-core:16.0.1'         // Recommended package
-    // implementation 'com.google.firebase:firebase-analytics:12.+' // deprecated
+    implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.google.firebase:firebase-analytics:16.4.0'
 
     // For RemoteConfig support
-    implementation 'com.google.firebase:firebase-config:16.0.0'
+    implementation 'com.google.firebase:firebase-config:16.4.1'
 
     // For Messaging support
     implementation 'com.google.firebase.messaging.cpp:firebase_messaging_cpp@aar'
-    implementation 'com.google.firebase:firebase-messaging:17.1.0'
+    implementation 'com.google.firebase:firebase-iid:17.1.1'
+    implementation 'com.google.firebase:firebase-messaging:17.5.0'
 
     // For Auth support
-    implementation 'com.google.firebase:firebase-auth:16.0.2'
+    implementation 'com.google.firebase:firebase-auth:16.2.0'
 
     // For Database support
-    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.google.firebase:firebase-database:16.1.0'
 
-    implementation 'com.google.firebase:firebase-common:16.0.0'
+//    implementation 'com.google.firebase:firebase-common:16.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

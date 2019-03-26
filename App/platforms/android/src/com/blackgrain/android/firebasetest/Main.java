@@ -11,6 +11,8 @@ import android.view.WindowManager;
 // Messaging support
 import android.os.Bundle;
 import android.content.Intent;
+
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.messaging.MessageForwardingService;
 
 public class Main extends QtActivity {
@@ -23,6 +25,7 @@ public class Main extends QtActivity {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
     }
 
 
